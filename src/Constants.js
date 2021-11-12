@@ -1,11 +1,11 @@
 const prod = {
     url: {
-        API_URL: 'https://dogewisdom.herokuapp.com/api',
+        API_URL: 'https://dogewisdom.herokuapp.com',
     }
 };
 const dev = {
     url: {
-        API_URL: 'http://localhost:5000/api'
+        API_URL: 'http://localhost:5000'
     }
 };
 

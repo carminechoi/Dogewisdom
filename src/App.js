@@ -9,10 +9,14 @@ import './App.css';
 function App() {
     const url = config.url.API_URL;
     const [data, setData] = useState(null);
+    const [dbData, setdbData] = useState(null);
 
     useEffect(() => {
-        axios.get(url).then((response) => {
+        axios.get(url + "/api").then((response) => {
             setData(response.data.api);
+        });
+        axios.get(url + "/database").then((response) => {
+            setdbData(response.data.dbData);
         });
       }, []);
 
@@ -21,6 +25,7 @@ function App() {
         <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
             <p>{!data ? "Loading..." : data}</p>
+            <p>{!dbData ? "Empty" : dbData}</p>
         </header>
         </div>
     );
