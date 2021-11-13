@@ -13,12 +13,12 @@ function App() {
 
     useEffect(() => {
         axios.get(url + "/api").then((response) => {
-            setData(response.data.api);
+            setData(response.data.message);
         });
-        axios.get(url + "/database").then((response) => {
-            setdbData(response.data.dbData);
+        axios.get(url + "/").then((response) => {
+            setdbData(response.data.message);
         });
-      }, []);
+      }, [url]);
 
     return (
         <div className="App">
