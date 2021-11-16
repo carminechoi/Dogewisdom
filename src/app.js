@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 
 // Routes
-app.use(homeRouter);
-app.use('cryptocurrencies/', cryptocurrenciesRouter)
+app.use('/', homeRouter);
+app.use('/cryptocurrencies', cryptocurrenciesRouter)
 
 export { app };

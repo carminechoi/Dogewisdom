@@ -4,6 +4,8 @@ import { CryptocurrenciesController } from '../controllers';
 
 const router = Router();
 
-router.get('/:all', CryptocurrenciesController.getAll);
+router.get('/', CryptocurrenciesController.getAll);
+
+router.get('/:id', CryptocurrenciesController.get);
 
 export { router as cryptocurrenciesRouter };
