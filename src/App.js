@@ -1,33 +1,19 @@
-import { React, useState, useEffect } from 'react';
-import axios from 'axios';
+import { React } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './pages/Home'
 
-import { config } from './Constants'
 
-import logo from './logo.svg';
+// import { config } from './Constants'
 import './App.css';
 
 function App() {
-    const url = config.url.API_URL;
-    const [data, setData] = useState(null);
-    const [dbData, setdbData] = useState(null);
-
-    useEffect(() => {
-        axios.get(url + "/api").then((response) => {
-            setData(response.data.message);
-        });
-        axios.get(url + "/").then((response) => {
-            setdbData(response.data.message);
-        });
-      }, [url]);
 
     return (
-        <div className="App">
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>{!data ? "Loading..." : data}</p>
-            <p>{!dbData ? "Empty" : dbData}</p>
-        </header>
-        </div>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
