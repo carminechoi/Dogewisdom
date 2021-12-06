@@ -1,0 +1,27 @@
+.header-container {
+    display: flex;
+    top: 0px;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    height: auto;
+}
+.title-container {
+    flex: 1 1 200px;
+}
+
+.title-container-item {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.title-heading {
+    font-size: 24pt;
+    color: #2D68FF;
+}
+
+.title-subheading {
+    font-size: 16pt;
+    color: #000000;
+}
