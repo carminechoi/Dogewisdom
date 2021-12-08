@@ -1,33 +1,28 @@
 import { CryptocurrenciesService } from '../services';
 
+
+// const getAll = async function (req, res, next) {
+//     try {
+//         let result = await CryptocurrenciesService.getAll()
+//         return res.status(200).json({ status: 200, data: result, message: "Succesfully Retrieved" });
+
+//     } catch (e) {
+//         return res.status(400).json({ status: 400, message: e.message });
+//     }
+// }
+
 class CryptocurrenciesController {
-    static async get(req, res, next) {
+    static getAll = async function (req, res, next) {
         try {
-            const { id } = req.params;
-            const cryptocurrenciesObject = await CryptocurrenciesService.get(id);
-            if (!cryptocurrenciesObject) {
-              throw new Error(`Cryptocurrency with primary key ${ id } not found`);
-            }
-            // res.locals.data = cryptocurrenciesObject;
-            return next();
-        } catch (error) {
-            return next (error);
-        }
-    }
-    
-    static async getAll(req, res, next) {
-        try {
-            const { id } = req.params;
-            const cryptocurrenciesObject = await CryptocurrenciesService.getAll(id);
-            if (!cryptocurrenciesObject) {
-              throw new Error(`Cryptocurrency with primary key ${ id } not found`);
-            }
-            // res.locals.data = cryptocurrenciesObject;
-            return next();
-        } catch (error) {
-            return next (error);
+            let result = await CryptocurrenciesService.getAll()
+            return res.status(200).json({ status: 200, data: result, message: "Succesfully Retrieved" });
+
+        } catch (e) {
+            return res.status(400).json({ status: 400, message: e.message });
         }
     }
 }
+
+
 
 export { CryptocurrenciesController };

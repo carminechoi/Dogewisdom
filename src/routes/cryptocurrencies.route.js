@@ -6,6 +6,6 @@ const router = Router();
 
 router.get('/', CryptocurrenciesController.getAll);
 
-router.get('/:id', CryptocurrenciesController.get);
+// router.get('/:id', CryptocurrenciesController.get);
 
 export { router as cryptocurrenciesRouter };
