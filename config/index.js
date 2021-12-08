@@ -7,6 +7,7 @@ export default {
 
     },
     "production": {
+        url: process.env.POSTGRES_URL,
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
