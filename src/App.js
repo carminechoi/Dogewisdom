@@ -4,7 +4,6 @@ import Home from './pages/Home'
 
 
 // import { config } from './Constants'
-import './App.css';
 
 function App() {
 

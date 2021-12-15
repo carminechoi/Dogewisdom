@@ -1,8 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';
-import Container from 'react-bootstrap/Container'
-import logo from '../assets/doge-logo.png';
+import Navbar from 'react-bootstrap/Navbar';import logo from '../assets/doge-logo.png';
 
 function Header() {
     return (
