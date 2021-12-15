@@ -7,17 +7,22 @@ import logo from '../assets/doge-logo.png';
 function Header() {
     return (
         <Navbar bg="dark" variant="dark">
-            <Container>
-                <Navbar.Brand href="/">
-                    <img 
-                        src={logo}
-                        alt="logo" 
-                        width="75" 
-                        height="75"
-                        className="d-inline-block align-top" 
-                    />
-                </Navbar.Brand>
-            </Container>
+            <Navbar.Brand href="/">
+                <div className='d-flex flex-row'>
+                    <div>
+                        <img 
+                            src={logo}
+                            alt="logo" 
+                            width="75" 
+                            height="75"
+                        />
+                    </div>
+                    <div className='d-flex flex-column'>
+                        <p>DogeWisdom.</p>
+                        <p>Reddit Crypto Tracker</p>
+                    </div>
+                </div>
+            </Navbar.Brand>
         </Navbar>
     )
 }
