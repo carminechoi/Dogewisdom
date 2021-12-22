@@ -1,6 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import Navbar from 'react-bootstrap/Navbar';import logo from '../assets/doge-logo.png';
+import Navbar from 'react-bootstrap/Navbar';
+import logo from '../assets/doge-logo.png';
 
 function Header() {
     return (
@@ -8,10 +9,10 @@ function Header() {
             <Navbar.Brand href="/">
                 <div className='d-flex flex-row'>
                     <div>
-                        <img 
+                        <img
                             src={logo}
-                            alt="logo" 
-                            width="75" 
+                            alt="logo"
+                            width="75"
                             height="75"
                         />
                     </div>
