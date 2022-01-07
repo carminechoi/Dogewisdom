@@ -1,26 +1,30 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';import logo from '../assets/doge-logo.png';
+import './Navbar.css';
+
 
 function Header() {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="light" expand="lg">
             <Navbar.Brand href="/">
-                <div className='d-flex flex-row'>
-                    <div>
+                <div className="ms-5 px-2 d-flex flex-row align-items-center">
+                    <div className="">
                         <img 
                             src={logo}
                             alt="logo" 
-                            width="75" 
-                            height="75"
+                            width="70" 
+                            height="70"
+                            className=""
                         />
                     </div>
-                    <div className='d-flex flex-column'>
-                        <p>DogeWisdom.</p>
-                        <p>Reddit Crypto Tracker</p>
+                    <div className="title d-flex flex-column px-2">
+                        <h1 className="title-main fw-bold fs-2">DogeWisdom.</h1>
+                        <h2 className="title-secondary fs-6">Reddit Crypto Tracker</h2>
                     </div>
                 </div>
             </Navbar.Brand>
+
         </Navbar>
     )
 }
