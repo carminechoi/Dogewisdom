@@ -35,8 +35,8 @@ function Header() {
                     <Form className="">
                         <FormControl
                         type="search"
-                        placeholder="Search"
-                        className="me-2"
+                        placeholder="Search all assets..."
+                        className="me-5"
                         aria-label="Search"
                         />
                     </Form>
