@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
-
+import Nav from 'react-bootstrap/Nav'
 import logo from '../assets/doge-logo.png';
 import './Navbar.css';
 
@@ -12,7 +12,7 @@ function Header() {
         <Navbar bg="light" expand="lg">
             <div className="d-flex me-auto">
                 <Navbar.Brand href="/">
-                    <div className="ms-5 px-2 d-flex flex-row align-items-center">
+                    <div className="ms-5 d-flex flex-row align-items-center">
                         <div className="">
                             <img 
                                 src={logo}
@@ -29,20 +29,20 @@ function Header() {
                     </div>
                 </Navbar.Brand>
             </div>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" className="me-5 px-2" />
-            <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end me-5 px-2" >
-                <Form className="">
-                    <FormControl 
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" className="me-5" />
+            <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end mx-5" >
+                <Nav className="gap-2">
+                    <Form className="">
+                        <FormControl
                         type="search"
-                        placeholder="Search all assets..."
-                        className=""
+                        placeholder="Search"
+                        className="me-2"
                         aria-label="Search"
-                    />
-                </Form>
-                <div className="d-flex ms-2">
-                    <Button className="w-100 px-2 me-1" >Log in</Button>
-                    <Button className="w-100 px-2 ms-1" >Sign up</Button>
-                </div>
+                        />
+                    </Form>
+                    <Button className="btn-account" >Log in</Button>
+                    <Button className="btn-account" >Sign up</Button>
+                </Nav>
             </Navbar.Collapse>
         </Navbar>
     )
