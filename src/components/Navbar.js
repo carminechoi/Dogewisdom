@@ -29,19 +29,21 @@ function Header() {
                     </div>
                 </Navbar.Brand>
             </div>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" className="me-5 px-2" />
-                <Navbar.Collapse id="responsive-navbar-nav" className="mx-5 px-2" >
-                    <Form className="">
-                        <FormControl 
-                            type="search"
-                            placeholder="Search all assets..."
-                            className=""
-                            aria-label="Search"
-                        />
-                    </Form>
-                    <Button className="" >Log in</Button>
-                    <Button className="" >Sign up</Button>
-                </Navbar.Collapse>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" className="me-5 px-2" />
+            <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end me-5 px-2" >
+                <Form className="">
+                    <FormControl 
+                        type="search"
+                        placeholder="Search all assets..."
+                        className=""
+                        aria-label="Search"
+                    />
+                </Form>
+                <div className="d-flex ms-2">
+                    <Button className="w-100 px-2 me-1" >Log in</Button>
+                    <Button className="w-100 px-2 ms-1" >Sign up</Button>
+                </div>
+            </Navbar.Collapse>
         </Navbar>
     )
 }
