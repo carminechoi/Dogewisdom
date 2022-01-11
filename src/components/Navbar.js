@@ -2,7 +2,6 @@ import React from 'react';
 import { Button, Form, FormControl } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
-
 import logo from '../assets/doge-logo.png';
 import './Navbar.css';
 
