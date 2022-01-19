@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormControl } from 'react-bootstrap';
 // import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
@@ -8,6 +9,9 @@ import './Navbar.css';
 
 
 function Header() {
+
+    const navigate = useNavigate();
+
     return (
         <Navbar bg="light" expand="lg">
             <div className="d-flex me-auto">
@@ -40,8 +44,8 @@ function Header() {
                         aria-label="Search"
                         />
                     </Form>
-                    <Button className="btn-account" >Log in</Button>
-                    <Button className="btn-account" >Sign up</Button>
+                    <Button className="btn-account login-btn" onClick={() => navigate("/login")} >Log in</Button>
+                    <Button className="btn-account signup-btn" onClick={() => navigate("/signup")} >Sign up</Button>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
