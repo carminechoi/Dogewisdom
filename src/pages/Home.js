@@ -5,7 +5,7 @@ import CardHeader from '../components/CardHeader';
 
 function Home() {
     return (
-        <div className="homepage">
+        <div className="homepage bg-light">
             <Header />
             <SubredditBar />
             <div className="">

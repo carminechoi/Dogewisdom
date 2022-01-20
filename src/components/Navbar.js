@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormControl } from 'react-bootstrap';
-// import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import logo from '../assets/doge-logo.png';
@@ -13,7 +12,7 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="white" expand="lg">
             <div className="d-flex me-auto">
                 <Navbar.Brand href="/">
                     <div className="ms-5 d-flex flex-row align-items-center">
