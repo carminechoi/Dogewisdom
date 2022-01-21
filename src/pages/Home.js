@@ -8,7 +8,7 @@ function Home() {
         <div className="homepage bg-light">
             <Header />
             <SubredditBar />
-            <div className="">
+            <div className="mx-5">
                 <CardHeader />
             </div>
         </div>
