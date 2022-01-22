@@ -1,15 +1,15 @@
 import React from 'react'
-import Header from '../components/Navbar'
+import NavigationBar from '../components/Navbar'
 import SubredditBar from '../components/SubredditBar';
-import CardHeader from '../components/CardHeader';
+import CryptoTable from '../components/Cards/CryptoTable';
 
 function Home() {
     return (
-        <div className="homepage bg-light">
-            <Header />
+        <div className="homepage bg-light mb-5">
+            <NavigationBar />
             <SubredditBar />
             <div className="mx-5">
-                <CardHeader />
+                <CryptoTable />
             </div>
         </div>
     )
