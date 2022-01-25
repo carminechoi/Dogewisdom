@@ -20,7 +20,7 @@ class SubredditBar extends Component {
 
     render() {
         return (
-            <div className='container d-flex flex-row' id='subreddit-nav'>
+            <div className='d-flex flex-row flex-wrap' id='subreddit-nav'>
                 <Button
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'All' ? "subreddit-button active" : "subreddit-button"}
@@ -88,20 +88,5 @@ class SubredditBar extends Component {
         );
     }
 }
-
-// function SubredditBar() {
-//     return (
-//         <div className='container d-flex flex-row' id='subreddit-nav'>
-//             <Button className='subreddit-button' variant="outline-primary" size="lg" active>All</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/CryptoCurrency</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/CryptoCurrencies</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/Bitcoin</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/SatoshiStreetBets</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/CryptoMoonShots</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/EthTrader</Button>
-//             <Button className='subreddit-button' variant="outline-secondary" size="lg">r/Ethereum</Button>
-//         </div>
-//     );
-// }
 
 export default SubredditBar;

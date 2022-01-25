@@ -1,6 +1,6 @@
 import React from 'react'
-import NavigationBar from '../components/Navbar'
-import SubredditBar from '../components/SubredditBar';
+import NavigationBar from '../components/Navbar/Navbar.js'
+import SubredditBar from '../components/SubredditBar/SubredditBar.js';
 import CryptoTable from '../components/Cards/CryptoTable';
 
 function Home() {
