@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CryptoCard (props) {
+function CryptoCard(props) {
     return (
         <div className="row box mt-1 py-2 bg-white">
             <div className="col text-center">a</div>
