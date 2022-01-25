@@ -12,7 +12,8 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <Navbar bg="white" expand="md">
+        <Navbar bg="white" expand="md" className="">
+            <div className="container">
             <div className="d-flex me-auto">
                 <Navbar.Brand href="/">
                     <div className="ms-5 d-flex flex-row align-items-center">
@@ -47,6 +48,7 @@ function Header() {
                     <Button className="btn-account signup-btn" onClick={() => navigate("/signup")} >Sign up</Button>
                 </Nav>
             </Navbar.Collapse>
+            </div>
         </Navbar>
     )
 }

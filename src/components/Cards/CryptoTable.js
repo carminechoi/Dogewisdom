@@ -5,9 +5,8 @@ import CryptoCard from './CryptoCard';
 
 function CryptoTable () {
     return (
-        <Table className="table-borderless gap-3" >
+        <Table className="table-borderless gap-3 container" >
             <CardHeader />
-            
             <tbody>
                 <CryptoCard className="" rank="1" name="Bitcoin" symbol="BTC" mentions="1234" upvotes="1234567" />
                 <CryptoCard rank="2" name="Cardano" symbol="ADA" mentions="1234" upvotes="1234567" />
