@@ -10,7 +10,7 @@ import SignUp from './pages/SignUp';
 function App() {
 
     return (
-        <div className="vh-100">
+        <div className="bg-light vh-100" >
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />
