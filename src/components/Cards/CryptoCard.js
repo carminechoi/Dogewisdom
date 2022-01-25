@@ -2,14 +2,14 @@ import React from 'react';
 
 function CryptoCard (props) {
     return (
-        <tr className="bg-white">
-            <td width={'10%'} className="text-center">a</td>
-            <td width={'10%'} className="text-center">{props.rank}</td>
-            <td width={'50%'}>{props.name}</td>
-            <td width={'10%'} className="text-center">{props.symbol}</td>
-            <td width={'10%'} className="text-center">{props.mentions}</td>
-            <td width={'10%'} className="text-center">{props.upvotes}</td>
-        </tr>
+        <div className="row box mt-1 py-2 bg-white">
+            <div className="col text-center">a</div>
+            <div className="col text-center">{props.rank}</div>
+            <div className="col ">{props.name}</div>
+            <div className="col text-center">{props.symbol}</div>
+            <div className="col text-center">{props.mentions}</div>
+            <div className="col text-center">{props.upvotes}</div>
+        </div>
     );
 }
 
