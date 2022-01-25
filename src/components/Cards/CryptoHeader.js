@@ -2,7 +2,7 @@ import React from 'react';
 
 function CryptoHeader () {
     return (
-        <thead>
+        <thead className="bg-white">
             <tr>
                 <th width={'10%'} className="text-center"></th>
                 <th width={'10%'} className="text-center">Rank</th>

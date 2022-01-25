@@ -12,7 +12,7 @@ function Header() {
     const navigate = useNavigate();
 
     return (
-        <Navbar bg="white" expand="lg">
+        <Navbar bg="white" expand="md">
             <div className="d-flex me-auto">
                 <Navbar.Brand href="/">
                     <div className="ms-5 d-flex flex-row align-items-center">

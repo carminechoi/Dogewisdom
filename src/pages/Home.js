@@ -5,7 +5,7 @@ import CryptoTable from '../components/Cards/CryptoTable';
 
 function Home() {
     return (
-        <div className="homepage bg-light mb-5">
+        <div className="homepage">
             <NavigationBar />
             <SubredditBar />
             <div className="mx-5">

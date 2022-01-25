@@ -5,10 +5,11 @@ import CryptoCard from './CryptoCard';
 
 function CryptoTable () {
     return (
-        <Table className="bg-white table-borderless" >
+        <Table className="table-borderless gap-3" >
             <CardHeader />
+            
             <tbody>
-                <CryptoCard rank="1" name="Bitcoin" symbol="BTC" mentions="1234" upvotes="1234567" />
+                <CryptoCard className="" rank="1" name="Bitcoin" symbol="BTC" mentions="1234" upvotes="1234567" />
                 <CryptoCard rank="2" name="Cardano" symbol="ADA" mentions="1234" upvotes="1234567" />
             </tbody>
         </Table>

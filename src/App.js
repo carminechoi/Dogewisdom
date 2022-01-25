@@ -10,13 +10,15 @@ import SignUp from './pages/SignUp';
 function App() {
 
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/signUp" element={<SignUp />} />
-            </Routes>
-        </BrowserRouter>
+        <div className="bg-light vh-100" >
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signUp" element={<SignUp />} />
+                </Routes>
+            </BrowserRouter>
+        </div>
     );
 }
 
