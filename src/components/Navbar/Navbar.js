@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Form, FormControl } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
-import logo from '../assets/doge-logo.png';
+import logo from '../../assets/doge-logo.png';
 import './Navbar.css';
 
 
@@ -17,10 +17,10 @@ function Header() {
                 <Navbar.Brand href="/">
                     <div className="ms-5 d-flex flex-row align-items-center">
                         <div className="">
-                            <img 
+                            <img
                                 src={logo}
-                                alt="logo" 
-                                width="70" 
+                                alt="logo"
+                                width="70"
                                 height="70"
                                 className=""
                             />
@@ -37,10 +37,10 @@ function Header() {
                 <Nav className="gap-2">
                     <Form className="">
                         <FormControl
-                        type="search"
-                        placeholder="Search all assets..."
-                        className="me-5"
-                        aria-label="Search"
+                            type="search"
+                            placeholder="Search all assets..."
+                            className="me-5"
+                            aria-label="Search"
                         />
                     </Form>
                     <Button className="btn-account login-btn" onClick={() => navigate("/login")} >Log in</Button>
