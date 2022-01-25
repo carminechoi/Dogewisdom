@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CryptoCard (props) {
+function CryptoCard(props) {
     return (
         <tr className="bg-white">
             <td width={'10%'} className="text-center">a</td>
