@@ -20,12 +20,12 @@ class SubredditBar extends Component {
 
     render() {
         return (
-            <div className='d-flex flex-row flex-wrap' id='subreddit-nav'>
+            <div className='d-flex flex-row flex-wrap container' id='subreddit-nav'>
                 <Button
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'All' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'All' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     All
                 </Button>
 
@@ -33,7 +33,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/CryptoCurrency' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/CryptoCurrency' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/CryptoCurrency
                 </Button>
 
@@ -41,7 +41,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/CryptoCurrencies' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/CryptoCurrencies' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/CryptoCurrencies
                 </Button>
 
@@ -49,7 +49,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/Bitcoin' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/Bitcoin' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/Bitcoin
                 </Button>
 
@@ -57,7 +57,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/SatoshiStreetBets' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/SatoshiStreetBets' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/SatoshiStreetBets
                 </Button>
 
@@ -65,7 +65,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/CryptoMoonShots' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/CryptoMoonShots' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/CryptoMoonShots
                 </Button>
 
@@ -73,7 +73,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/EthTrader' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/EthTrader' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/EthTrader
                 </Button>
 
@@ -81,7 +81,7 @@ class SubredditBar extends Component {
                     onClick={(e) => this.handleButton(e)}
                     className={this.state.subreddit === 'r/Ethereum' ? "subreddit-button active" : "subreddit-button"}
                     variant={this.state.subreddit === 'r/Ethereum' ? "outline-primary" : "outline-secondary"}
-                    size="lg">
+                    size="md">
                     r/Ethereum
                 </Button>
             </div>
