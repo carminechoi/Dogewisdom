@@ -14,7 +14,7 @@ function Header() {
     const [showLogin, setShowLogin] = useState(false);
 
     return (
-        <Navbar bg="white" expand="md" className="">
+        <Navbar bg="white" expand="lg" className="">
             <div className="container">
                 <div className="d-flex me-auto">
                     <Navbar.Brand href="/">
