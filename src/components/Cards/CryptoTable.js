@@ -11,7 +11,7 @@ function CryptoTable () {
     const [cryptoData, setCryptoData] = useState(null);
 
     useEffect(() => {
-        axios.get(`${url}/cryptocurrencies/`).then((response) => {
+        axios.get(`${url}/cryptocurrencies/r/all`).then((response) => {
             setCryptoData(response.data.data);
         });
     }, []);

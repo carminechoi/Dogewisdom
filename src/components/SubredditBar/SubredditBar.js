@@ -8,7 +8,7 @@ import { Component } from 'react';
 class SubredditBar extends Component {
     constructor(props) {
         super(props);
-        this.state = { subreddit: 'All' };
+        this.state = { subreddit: 'r/all' };
         this.handleButton = this.handleButton.bind(this);
     }
 
@@ -23,8 +23,8 @@ class SubredditBar extends Component {
             <div className='d-flex flex-row flex-wrap container' id='subreddit-nav'>
                 <Button
                     onClick={(e) => this.handleButton(e)}
-                    className={this.state.subreddit === 'All' ? "subreddit-button active" : "subreddit-button"}
-                    variant={this.state.subreddit === 'All' ? "outline-primary" : "outline-secondary"}
+                    className={this.state.subreddit === 'r/all' ? "subreddit-button active" : "subreddit-button"}
+                    variant={this.state.subreddit === 'r/all' ? "outline-primary" : "outline-secondary"}
                     size="md">
                     All
                 </Button>
