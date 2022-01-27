@@ -1,32 +1,23 @@
-import { React, useState, useEffect } from 'react';
-import axios from 'axios';
-
-import { config } from './Constants'
-
-import logo from './logo.svg';
+import { React } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import './App.css';
 
-function App() {
-    const url = config.url.API_URL;
-    const [data, setData] = useState(null);
-    const [dbData, setdbData] = useState(null);
+// import { config } from './Constants'
 
-    useEffect(() => {
-        axios.get(url + "/api").then((response) => {
-            setData(response.data.message);
-        });
-        axios.get(url + "/").then((response) => {
-            setdbData(response.data.message);
-        });
-      }, [url]);
+function App() {
 
     return (
-        <div className="App">
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>{!data ? "Loading..." : data}</p>
-            <p>{!dbData ? "Empty" : dbData}</p>
-        </header>
+        <div className="app-router h-100" >
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/signUp" element={<SignUp />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     );
 }
