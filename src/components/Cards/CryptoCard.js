@@ -1,18 +1,29 @@
 import React from 'react';
+import cmcData from '../../assets/cmc-data.json'
 
 function CryptoCard(props) {
-    let imageURL = `https://cryptocurrencyliveprices.com/img/${props.symbol.toLowerCase()}-${props.name.toLowerCase().replace(/\s/g , "-")}.png`;
     
-    function hideImage(img) {
-        img.style.display = "none";
+    function getImageURL() {
+        let crypto, imageURL;
+        
+        crypto = cmcData.filter(function(cmcData) {
+            return cmcData.symbol === props.symbol;
+        })[0];
+
+        if (crypto) {
+            imageURL = `https://s2.coinmarketcap.com/static/img/coins/64x64/${crypto.id}.png`;
+        } else {
+            imageURL = `data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D`
+        }
+        return imageURL;
     }
+
     return (
         <tr className="bg-white align-middle">
             <td className="text-center">a</td>
             <td className="text-center">{props.rank}</td>
-            <td className="d-flex align-items-center align-text-center ms-2">
-                <img  className="" src={imageURL} alt="" width="20" height="20" 
-                    onError={"this.style.display='none'"}/>
+            <td className="d-flex align-items-center align-text-center ps-4">
+                <img  className="" src={getImageURL()} alt="" width="20" height="20" />
                 <div className="ms-2">{props.name}</div>
             </td>
             <td className="text-center">{props.symbol}</td>
