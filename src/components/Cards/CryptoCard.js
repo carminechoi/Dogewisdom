@@ -6,10 +6,12 @@ function CryptoCard(props) {
     function getImageURL() {
         let crypto, imageURL;
         
+        // find matching id based on symbol
         crypto = cmcData.filter(function(cmcData) {
             return cmcData.symbol === props.symbol;
         })[0];
 
+        // display empty image if cmc does not have
         if (crypto) {
             imageURL = `https://s2.coinmarketcap.com/static/img/coins/64x64/${crypto.id}.png`;
         } else {
