@@ -17,7 +17,7 @@ function CryptoTable () {
     }, []);
 
     return (
-        <Table className="crypto-table container bg-white" >
+        <Table responsive className="crypto-table container bg-white" >
             <thead>
                 <CardHeader />
             </thead>
