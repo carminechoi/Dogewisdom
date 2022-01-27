@@ -15,13 +15,14 @@ function CryptoTable () {
     }, []);
 
     return (
-        <Table className="crypto-table container table-borderless" >
+        <Table className="crypto-table container bg-white" >
             <thead>
                 <CardHeader />
             </thead>
             <tbody>
-                {cryptoData.map((data, id) => {
+                {cryptoData && cryptoData.map((data, id) => {
                     return <CryptoCard 
+                        key={id}
                         rank={data.rank} 
                         name={data.name} 
                         symbol={data.ticker.slice(0,-2)}

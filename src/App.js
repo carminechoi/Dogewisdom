@@ -10,7 +10,7 @@ import './App.css';
 function App() {
 
     return (
-        <div className="app-router vh-100" >
+        <div className="app-router h-100" >
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Home />} />

@@ -5,7 +5,7 @@ function CryptoHeader () {
         <tr className="bg-white">
             <th className="text-center">a</th>
             <th className="text-center">Rank</th>
-            <th className="">Name</th>
+            <th className="ps-5">Name</th>
             <th className="text-center">Symbol</th>
             <th className="text-center">Mentions</th>
             <th className="text-center">Upvotes</th>
