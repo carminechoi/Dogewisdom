@@ -12,6 +12,16 @@ class CryptocurrenciesService {
 			throw Error(`CryptocurrenciesService getAll: ${e}`);
 		}
 	}
+
+	static async getCryptocurrency() {
+		try  {
+			const url = 'https://apewisdom.io/api/v1.0/filter/CryptoCurrency/page/1';
+			const response = await axios.get(url);
+			return response.data.results;
+		} catch (e) {
+			throw Error(`CryptocurrenciesService getAll: ${e}`);
+		}
+	}
 }
 
 export { CryptocurrenciesService };
