@@ -3,13 +3,15 @@ import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import CardHeader from './CryptoHeader';
 import CryptoCard from './CryptoCard';
+import { config } from '../../Constants';
 import './CryptoTable.css'
 
 function CryptoTable () {
+    const url = config.url.API_URL;
     const [cryptoData, setCryptoData] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/cryptocurrencies/').then((response) => {
+        axios.get(`${url}/cryptocurrencies/`).then((response) => {
             setCryptoData(response.data.data);
         });
     }, []);
