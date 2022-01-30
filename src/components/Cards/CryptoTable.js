@@ -6,15 +6,16 @@ import CryptoCard from './CryptoCard';
 import { config } from '../../Constants';
 import './CryptoTable.css'
 
-function CryptoTable () {
+function CryptoTable (props) {
     const url = config.url.API_URL;
     const [cryptoData, setCryptoData] = useState(null);
 
     useEffect(() => {
-        axios.get(`${url}/cryptocurrencies/r/all`).then((response) => {
+        axios.get(`${url}/cryptocurrencies/${props.subreddit}`).then((response) => {
             setCryptoData(response.data.data);
         });
-    }, []);
+        console.log(`in CryptoTable: ${url}/cryptocurrencies/${props.subreddit}`)
+    }, [url, props.subreddit]);
 
     return (
         <Table responsive className="crypto-table container bg-white" >

@@ -3,7 +3,7 @@ import cmcData from '../../assets/cmc-data.json'
 
 function CryptoCard(props) {
     
-    function getImageURL() {
+    const getImageURL = () => {
         let crypto, imageURL;
         
         // find matching id based on symbol
