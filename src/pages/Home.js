@@ -4,7 +4,7 @@ import SubredditBar from '../components/SubredditBar/SubredditBar.js';
 import CryptoTable from '../components/Cards/CryptoTable';
 
 function Home() {
-    const [subreddit, setSubreddit] = useState('r/All')
+    const [subreddit, setSubreddit] = useState('All')
 
     return (
         <div className="homepage">

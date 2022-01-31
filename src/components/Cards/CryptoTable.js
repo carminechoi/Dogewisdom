@@ -14,7 +14,6 @@ function CryptoTable (props) {
         axios.get(`${url}/cryptocurrencies/${props.subreddit}`).then((response) => {
             setCryptoData(response.data.data);
         });
-        console.log(`in CryptoTable: ${url}/cryptocurrencies/${props.subreddit}`)
     }, [url, props.subreddit]);
 
     return (
