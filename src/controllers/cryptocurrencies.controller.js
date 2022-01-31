@@ -1,9 +1,10 @@
 import { CryptocurrenciesService } from '../services';
 
 class CryptocurrenciesController {
-    static getAll = async function (req, res, next) {
+
+    static getCryptoData = async function (req, res, next) {
         try {
-            let result = await CryptocurrenciesService.getAll()
+            let result = await CryptocurrenciesService.getCryptoData(req.path);
             return res.status(200).json({ status: 200, data: result, message: "Succesfully Retrieved" });
 
         } catch (e) {

@@ -3,9 +3,13 @@ import axios from 'axios';
 
 
 class CryptocurrenciesService {
-	static async getAll() {
+	static async getCryptoData(subreddit) {
+		console.log(`In server: ${subreddit}`);
 		try  {
-			const url = 'https://apewisdom.io/api/v1.0/filter/all-crypto/page/1';
+			
+			if (subreddit === '/All') subreddit = 'all-crypto';
+			else subreddit = subreddit.substring(3);
+			const url = `https://apewisdom.io/api/v1.0/filter/${subreddit}/page/1`;
 			const response = await axios.get(url);
 			return response.data.results;
 		} catch (e) {
