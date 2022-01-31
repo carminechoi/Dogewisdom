@@ -18,7 +18,7 @@ function Header() {
             <div className="container">
                 <div className="d-flex me-auto">
                     <Navbar.Brand href="/">
-                        <div className="ms-5 d-flex flex-row align-items-center">
+                        <div className="d-flex flex-row align-items-center">
                             <div className="">
                                 <img
                                     src={logo}
@@ -35,14 +35,14 @@ function Header() {
                         </div>
                     </Navbar.Brand>
                 </div>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" className="me-5" />
-                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end mx-5" >
+                <Navbar.Toggle aria-controls="responsive-navbar-nav" className="" />
+                <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end" >
                     <Nav className="gap-2">
                         <Form className="">
                             <FormControl
                                 type="search"
                                 placeholder="Search all assets..."
-                                className="me-5"
+                                className=""
                                 aria-label="Search"
                             />
                         </Form>
