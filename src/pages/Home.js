@@ -10,7 +10,7 @@ function Home() {
         <div className="homepage">
             <NavigationBar />
             <SubredditBar subreddit={subreddit} setSubreddit={setSubreddit} />
-            <div className="mx-5">
+            <div className="mx-2">
                 <CryptoTable subreddit={subreddit} />
             </div>
         </div>
