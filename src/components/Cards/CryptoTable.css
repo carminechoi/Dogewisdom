@@ -1,3 +1,8 @@
+@media screen and (max-width: 600px) {
+    .crypto-table{font-size: 0.8rem;}
+}
+
+
 .crypto-table {
     border-collapse: separate;
     border-spacing: 0 2px;
