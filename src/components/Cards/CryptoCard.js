@@ -1,6 +1,7 @@
 import React from 'react';
 import cmcData from '../../assets/cmc-data.json'
 
+
 function CryptoCard(props) {
     
     const getImageURL = () => {
@@ -22,7 +23,11 @@ function CryptoCard(props) {
 
     return (
         <tr className="bg-white align-middle">
-            <td className="text-center d-none d-sm-table-cell">a</td>
+            <td className="text-center d-none d-sm-table-cell">
+                <input type="checkbox" />
+                <i src="../../assets/star.svg" />
+                <i src="../../assets/star-fill.svg" />
+            </td>
             <td className="text-center d-none d-sm-table-cell">{props.rank}</td>
             <td className="d-flex align-items-center align-text-center ps-4">
                 <img  className="" src={getImageURL()} alt="" width="20" height="20" />
