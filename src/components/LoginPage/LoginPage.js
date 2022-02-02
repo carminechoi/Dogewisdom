@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import Cookies from "js-cookie";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
+import "./Login.css";
 
 class LoginPage extends Component {
     constructor(props) {
@@ -58,8 +59,11 @@ class LoginPage extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <div className="loginPage">
-                        <Form className="forms col-sm-8">
-                            <Form.Group controlId="formBasicName">
+                        <Form className="forms">
+                            <header>
+                                Username
+                            </header>
+                            <Form.Group controlId="formBasicName" className="form-row">
                                 {/* <Form.Label>Username</Form.Label> */}
                                 <Form.Control
                                     type="name"
@@ -68,7 +72,10 @@ class LoginPage extends Component {
                                     onChange={(e) => this.handleChange(e)} />
                             </Form.Group>
 
-                            <Form.Group controlId="formBasicPassword">
+                            <header>
+                                Password
+                            </header>
+                            <Form.Group controlId="formBasicPassword" className="form-row">
                                 {/* <Form.Label>Password</Form.Label> */}
                                 <Form.Control
                                     type="password"
@@ -78,7 +85,8 @@ class LoginPage extends Component {
                             </Form.Group>
 
                             <Button
-                                variant="outline-secondary"
+                                className="form-button"
+                                variant="outline-primary"
                                 onClick={(e) => this.handleLogin(e)}>
                                 Login
                             </Button>
