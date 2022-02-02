@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import FormCheck from 'react-bootstrap/FormCheck';
 import cmcData from '../../assets/cmc-data.json';
 import { ReactComponent as Star } from '../../assets/star.svg';
 import { ReactComponent as Starfill } from '../../assets/star-fill.svg';
+import './CryptoCard.css';
 
 function CryptoCard(props) {
 
@@ -30,7 +30,7 @@ function CryptoCard(props) {
 
     return (
         <tr className="bg-white align-middle">
-            <td className="text-center d-none d-sm-table-cell">
+            <td className="text-center d-none d-sm-table-cell noselect">
                 {bookmark ? <Starfill fill="gold" onClick={handleBookmark} /> : <Star onClick={handleBookmark} />}
             </td>
             <td className="text-center d-none d-sm-table-cell">{props.rank}</td>
