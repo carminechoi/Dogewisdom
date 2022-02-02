@@ -1,9 +1,12 @@
-import React from 'react';
-import cmcData from '../../assets/cmc-data.json'
-
+import React, {useState} from 'react';
+import FormCheck from 'react-bootstrap/FormCheck';
+import cmcData from '../../assets/cmc-data.json';
+import { ReactComponent as Star } from '../../assets/star.svg';
+import { ReactComponent as Starfill } from '../../assets/star-fill.svg';
 
 function CryptoCard(props) {
-    
+
+    const [bookmark, setBookmark] = useState(props.bookmarked);
     const getImageURL = () => {
         let crypto, imageURL;
         
@@ -21,12 +24,14 @@ function CryptoCard(props) {
         return imageURL;
     }
 
+    const handleBookmark = () => {
+        setBookmark(!bookmark);
+    }
+
     return (
         <tr className="bg-white align-middle">
             <td className="text-center d-none d-sm-table-cell">
-                <input type="checkbox" />
-                <i src="../../assets/star.svg" />
-                <i src="../../assets/star-fill.svg" />
+                {bookmark ? <Starfill fill="gold" onClick={handleBookmark} /> : <Star onClick={handleBookmark} />}
             </td>
             <td className="text-center d-none d-sm-table-cell">{props.rank}</td>
             <td className="d-flex align-items-center align-text-center ps-4">

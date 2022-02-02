@@ -30,6 +30,7 @@ function CryptoTable (props) {
                         symbol={data.ticker.slice(0,-2)}
                         mentions={data.mentions} 
                         upvotes={data.upvotes}
+                        bookmarked={false}
                     />
                 })}
             </tbody>
