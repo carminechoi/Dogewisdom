@@ -2,9 +2,9 @@ import React, { Component, useState } from "react"
 import { Form, Button } from "react-bootstrap";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { config } from '../../Constants';
 
 import Modal from "react-bootstrap/Modal";
-import bcrypt from "bcryptjs";
 import './Register.css';
 
 const SALTROUNDS = 7;
@@ -27,40 +27,38 @@ class Register extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        console.log(e.target.name);
     }
 
     handleRegister = async (e) => {
         e.preventDefault()
+        const url = config.url.API_URL;
         if (this.state.password !== this.state.password2) {
             this.setState({
                 errorCheck: "Password does not match"
             })
             console.log("pass no match");
         } else {
-            // ADD SALT TO PASSWORD OR SOMETHING. HASH IT
-            const hashedPass = await bcrypt.hash(this.state.password, SALTROUNDS);
             const registerUser = {
                 username: this.state.username,
                 email: this.state.email,
-                password: hashedPass
+                password: this.state.password
             }
             console.log(registerUser);
-            // axios.post("api/auth/register", registerUser, { "Content-Type": "application/json" })
-            //     .then(res => {
-            //         Cookies.set("token", res.data.token, { expires: 7 })
-            //         //window.location.reload(false) // Reloads page for app the render again
-            //         this.props.onClose() //Closes Login Modal
-            //         this.props.redirectTotalPage()
-            //         window.location.reload(false) // Reloads page for app the render again
+            axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
+                .then(res => {
+                    //Cookies.set("token", res.data.token, { expires: 7 })
+                    //window.location.reload(false) // Reloads page for app the render again
+                    this.props.onClose() //Closes Login Modal
+                    this.props.redirectTotalPage()
+                    window.location.reload(false) // Reloads page for app the render again
 
-            //     })
-            //     .catch(err => {
-            //         console.log("Registration Error " + err)
-            //         this.setState({
-            //             errorCheck: "Dupilcate Registration"
-            //         })
-            //     })
+                })
+                .catch(err => {
+                    console.log("Registration Error " + err)
+                    this.setState({
+                        errorCheck: "Dupilcate Registration"
+                    })
+                })
         }
     }
 
