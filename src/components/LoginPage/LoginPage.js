@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import "./Login.css";
+import { config } from '../../Constants';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -32,22 +33,21 @@ class LoginPage extends Component {
             username: this.state.username,
             password: this.state.password,
         }
+        const url = config.url.API_URL;
 
-        console.log("login called");
-        console.log(loginUser);
-
-        // axios.post("api/auth/login", loginUser,{"Content-Type": "application/json"})
-        //     .then(res => {
-        //         Cookies.set("token", res.data.token, {expires:1})
-        //         window.location.reload(false) // Reloads page for app the render again
-        //         this.props.onClose() //Closes Login Modal
-        //     })
-        //     .catch(err => {
-        //         console.log("Login Error" + err)
-        //         this.setState({
-        //             loginCheck: "Invalid Username or Password",
-        //         })
-        //     } )
+        axios.post(url + "/api/login", loginUser, { "Content-Type": "application/json" })
+            .then(res => {
+                //Cookies.set("token", res.data.token, {expires:1})
+                //window.location.reload(false) // Reloads page for app the render again
+                console.log(res);
+                this.props.onClose() //Closes Login Modal
+            })
+            .catch(err => {
+                console.log("Login Error" + err)
+                this.setState({
+                    loginCheck: "Invalid Username or Password",
+                })
+            })
 
     }
 
