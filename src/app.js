@@ -9,12 +9,12 @@ const app = express();
 
 // Middlewares
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 // Routes
 app.use('/', homeRouter);
-app.use('/cryptocurrencies', cryptocurrenciesRouter);
+app.use('/api', cryptocurrenciesRouter);
 app.use('/api', userRouter);
-
-console.log(app._router);
 
 export { app };

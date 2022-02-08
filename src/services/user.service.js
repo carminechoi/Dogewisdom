@@ -1,4 +1,5 @@
 import axios from 'axios';
+import User from '../models/user.model';
 
 class UserService {
     static async postLogin(loginData) {
@@ -11,9 +12,13 @@ class UserService {
 
     static async postRegister(registerData) {
         try {
-            return "ok";
+            const newUser = await User.create({
+                username: registerData.body.username,
+                password: registerData.body.password,
+                email: registerData.body.email,
+            });
         } catch (e) {
-            console.log(e);
+            next(e);
         }
     }
 }
