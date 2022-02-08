@@ -11,7 +11,7 @@ function CryptoTable (props) {
     const [cryptoData, setCryptoData] = useState(null);
 
     useEffect(() => {
-        axios.get(`${url}/cryptocurrencies/${props.subreddit}`).then((response) => {
+        axios.get(`${url}/api/cryptocurrencies/${props.subreddit}`).then((response) => {
             setCryptoData(response.data.data);
         });
     }, [url, props.subreddit]);
