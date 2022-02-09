@@ -1,5 +1,6 @@
 import axios from 'axios';
 import User from '../models/user.model';
+import { handleError } from '../controllers/error.controller';
 
 class UserService {
     static async postLogin(loginData) {
@@ -17,8 +18,8 @@ class UserService {
                 password: registerData.body.password,
                 email: registerData.body.email,
             });
-        } catch (e) {
-            next(e);
+        } catch (err) {
+            handleError(err);
         }
     }
 }
