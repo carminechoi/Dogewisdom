@@ -1,4 +1,3 @@
-// import models, { sequelize } from '../models';
 import axios from 'axios';
 
 
