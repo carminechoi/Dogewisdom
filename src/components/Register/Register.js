@@ -43,9 +43,9 @@ class Register extends Component {
                 email: this.state.email,
                 password: this.state.password
             }
-            console.log(registerUser);
             axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
                 .then(res => {
+                    console.log('in res')
                     //Cookies.set("token", res.data.token, { expires: 7 })
                     //window.location.reload(false) // Reloads page for app the render again
                     this.props.onClose() //Closes Login Modal
@@ -54,7 +54,8 @@ class Register extends Component {
 
                 })
                 .catch(err => {
-                    console.log("Registration Error " + err)
+                    console.log(err)
+                    console.log(`Registration Error ${typeof err}`)
                     this.setState({
                         errorCheck: "Dupilcate Registration"
                     })
@@ -94,7 +95,7 @@ class Register extends Component {
                             <header>Password</header>
                             <Form.Group controlId="formBasicPassword" className="form-row">
                                 {/* <Form.Label>Password</Form.Label> */}
-                                <Form.Control
+                                <Form.Control 
                                     type="password"
                                     name="password"
                                     placeholder="Password"
