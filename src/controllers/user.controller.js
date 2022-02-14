@@ -14,10 +14,10 @@ class UserController {
     static postRegister = async function (req, res, next) {
         try {
             let result = await UserService.postRegister(req);
-            console.log("in success")
-            return res.status(200).json({ status: result.status, data: result.message });
+            let status = result.status === "success" ? 200 : 400;
+            console.log(result.message)
+            return res.status(status).json({ status: result.status, message: result.message });
         } catch (e) {
-            console.log("in error")
             return res.status(500).json({ status: 500 , message: e });
         }
     }

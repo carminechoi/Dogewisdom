@@ -3,21 +3,13 @@ import res from 'express/lib/response';
 import User from '../models/user.model';
 
 class UserService {
-    createNewUser(username, password, email) {
-        User.create({
-            username: username,
-            password: password,
-            email: email,
-        });
-    }
-
     static checkUserExist(user, registerData) {
         let e = {}
         if (user.username === registerData.username) {
-            e.message.username = "username already exists";
+            e.username = "already exists";
         }
         if (user.email === registerData.email) {
-            e.message.email = "email already exists";
+            e.email = "already exists";
         }
         return e
     }
@@ -33,23 +25,26 @@ class UserService {
     static async postRegister(registerData) {
         // Check if username or email already exists,
         // throw error if true, save user if false
- 
-        await User.findOne({
+        if (!registerData.body.email || !registerData.body.username || !registerData.body.password) {
+            return {status: "failure", message: "user form incomplete"}
+        }
+        let user = await User.findOne({
             $or: [{ email: registerData.body.email, }, 
                 { username: registerData.body.username, },
             ]
-        }).then(user => {
-            if (user) {
-                console.log("in here")
-                return {status: "failure", message: this.checkUserExist(user, registerData.body)};
-            } else {
-                return {status: "success", data: createNewUser(
-                    registerData.body.username,
-                    registerData.body.password,
-                    registerData.body.email, )}
-            }
-        })
-        
+        });
+
+        if (user) {
+            return {status: "failure", message: this.checkUserExist(user, registerData.body)};
+        } else {
+            console.log(`in userService postRegister: ${registerData.body}`)
+            User.create({
+                username: registerData.body.username,
+                password: registerData.body.password,
+                email: registerData.body.email,
+            });
+            return {status: "success", message: "user created"}
+        }
     }
 }
 
