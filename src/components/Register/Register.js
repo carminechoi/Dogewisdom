@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react"
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, InputGroup } from "react-bootstrap";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { config } from '../../Constants';
@@ -13,39 +13,38 @@ class Register extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: "",
-            email: "",
-            password: "",
-            password2: "",
-            errorCheck: "",
+            duplicateUsername: false,
+            duplicateEmail: false,
+            validated: false,
         }
 
     }
 
-    handleChange = (e) => {
-        // Changes state with current information
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
-
     handleRegister = async (e) => {
-        e.preventDefault()
         const url = config.url.API_URL;
-        if (this.state.password !== this.state.password2) {
+        const form = e.target;
+        console.log(e.currentTarget)
+        if (e.currentTarget.checkValidity() === false) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        if (form[2].value !== form[3].value) {
             this.setState({
                 errorCheck: "Password does not match"
             })
             console.log("pass no match");
         } else {
             const registerUser = {
-                username: this.state.username,
-                email: this.state.email,
-                password: this.state.password
+                username: form[0].value,
+                email: form[1].value,
+                password: form[2].value
             }
             axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
                 .then(res => {
-                    console.log('in res')
+                    this.setState({
+                        validated: true,
+                    })
                     //Cookies.set("token", res.data.token, { expires: 7 })
                     //window.location.reload(false) // Reloads page for app the render again
                     this.props.onClose() //Closes Login Modal
@@ -54,11 +53,18 @@ class Register extends Component {
 
                 })
                 .catch(err => {
-                    console.log(err)
-                    console.log(`Registration Error ${typeof err}`)
-                    this.setState({
-                        errorCheck: "Dupilcate Registration"
-                    })
+                    let message = err.response.data.message;
+                    if (message.email) {
+                        this.setState({
+                            duplicateEmail: true,
+                        })
+                    } 
+                    if (message.username) {
+                        this.setState({
+                            duplicateUsername: true,
+                        })
+                    }
+                    console.log(`Registration Error| email: ${message.email}, username: ${message.username}`)
                 })
         }
     }
@@ -71,25 +77,32 @@ class Register extends Component {
                 </Modal.Header>
                 <Modal.Body>
                     <div>
-                        <Form>
-                            <header>Username</header>
+                        <Form noValidate validated={this.state.validated} onSubmit={this.handleRegister}>
                             <Form.Group controlId="formBasicName" className="form-row">
-                                {/* <Form.Label>Username</Form.Label> */}
-                                <Form.Control
-                                    type="name"
-                                    name="username"
-                                    placeholder="Username"
-                                    onChange={(e) => this.handleChange(e)} />
+                                <Form.Label>Username</Form.Label>
+                                <InputGroup hasValidation>
+                                    <Form.Control
+                                        required
+                                        type="name"
+                                        name="username"
+                                        placeholder="Username" 
+                                    />
+                                    <Form.Control.Feedback type="invalid">
+                                        Username already exists
+                                    </Form.Control.Feedback>
+                                </InputGroup>
                             </Form.Group>
 
-                            <header>Email</header>
                             <Form.Group controlId="formBasicEmail" className="form-row">
-                                {/* <Form.Label>Email</Form.Label> */}
+                                <Form.Label>Email</Form.Label>
                                 <Form.Control
                                     type="email"
                                     name="email"
                                     placeholder="Email"
-                                    onChange={(e) => this.handleChange(e)} />
+                                />
+                                <Form.Control.Feedback type="invalid">
+                                    Email already exists
+                                </Form.Control.Feedback>
                             </Form.Group>
 
                             <header>Password</header>
@@ -99,7 +112,7 @@ class Register extends Component {
                                     type="password"
                                     name="password"
                                     placeholder="Password"
-                                    onChange={(e) => this.handleChange(e)} />
+                                />
                             </Form.Group>
 
                             <header>Confirm Password</header>
@@ -109,14 +122,9 @@ class Register extends Component {
                                     type="password"
                                     name="password2"
                                     placeholder="Confirm Password"
-                                    onChange={(e) => this.handleChange(e)} />
+                                />
                             </Form.Group>
-
-                            <Button
-                                variant="outline-primary"
-                                onClick={(e) => this.handleRegister(e)}>
-                                Sign Up
-                            </Button>
+                            <Button variant="outline-primary" type="submit">Sign Up</Button>
                         </Form>
                     </div>
                 </Modal.Body>
