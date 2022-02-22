@@ -9,7 +9,7 @@ const app = express();
 
 // Middlewares
 app.use(cors({
-    origin: ['https://dogewisdom.netlify.app'],
+    origin: ['https://dogewisdom.netlify.app', 'http://localhost:3000'],
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
