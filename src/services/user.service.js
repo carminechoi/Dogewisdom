@@ -37,7 +37,6 @@ class UserService {
         if (user) {
             return {status: "failure", message: this.checkUserExist(user, registerData.body)};
         } else {
-            console.log(`in userService postRegister: ${registerData.body}`)
             User.create({
                 username: registerData.body.username,
                 password: registerData.body.password,
