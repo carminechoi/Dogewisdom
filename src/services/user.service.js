@@ -6,10 +6,10 @@ class UserService {
     static checkUserExist(user, registerData) {
         let e = {}
         if (user.username === registerData.username) {
-            e.username = "already exists";
+            e.username = "Username already exists";
         }
         if (user.email === registerData.email) {
-            e.email = "already exists";
+            e.email = "Email already exists";
         }
         return e
     }
