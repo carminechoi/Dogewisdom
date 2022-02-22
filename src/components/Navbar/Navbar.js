@@ -7,11 +7,13 @@ import logo from '../../assets/doge-logo.png';
 import './Navbar.css';
 
 import LoginPage from '../LoginPage/LoginPage';
+import Register from '../Register/Register';
 
 function Header() {
 
     const navigate = useNavigate();
     const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
 
     return (
         <Navbar bg="white" expand="lg" className="">
@@ -51,7 +53,11 @@ function Header() {
                             onClose={setShowLogin}
                             showLogin={showLogin}
                         />
-                        <Button className="btn-account signup-btn" onClick={() => navigate("/signup")} >Sign up</Button>
+                        <Button className="btn-account signup-btn" onClick={() => setShowRegister(!showRegister)} >Sign up</Button>
+                        <Register
+                            onClose={setShowRegister}
+                            showRegister={showRegister}
+                        />
                     </Nav>
                 </Navbar.Collapse>
             </div>

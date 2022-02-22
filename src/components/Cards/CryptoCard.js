@@ -1,8 +1,12 @@
-import React from 'react';
-import cmcData from '../../assets/cmc-data.json'
+import React, {useState} from 'react';
+import cmcData from '../../assets/cmc-data.json';
+import { ReactComponent as Star } from '../../assets/star.svg';
+import { ReactComponent as Starfill } from '../../assets/star-fill.svg';
+import './CryptoCard.css';
 
 function CryptoCard(props) {
-    
+
+    const [bookmark, setBookmark] = useState(props.bookmarked);
     const getImageURL = () => {
         let crypto, imageURL;
         
@@ -20,9 +24,15 @@ function CryptoCard(props) {
         return imageURL;
     }
 
+    const handleBookmark = () => {
+        setBookmark(!bookmark);
+    }
+
     return (
         <tr className="bg-white align-middle">
-            <td className="text-center d-none d-sm-table-cell">a</td>
+            <td className="text-center d-none d-sm-table-cell noselect">
+                {bookmark ? <Starfill fill="gold" onClick={handleBookmark} /> : <Star onClick={handleBookmark} />}
+            </td>
             <td className="text-center d-none d-sm-table-cell">{props.rank}</td>
             <td className="d-flex align-items-center align-text-center ps-4">
                 <img  className="" src={getImageURL()} alt="" width="20" height="20" />
