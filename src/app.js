@@ -10,6 +10,8 @@ const app = express();
 // Middlewares
 app.use(cors({
     origin: ['https://dogewisdom.netlify.app', 'http://localhost:3000'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
