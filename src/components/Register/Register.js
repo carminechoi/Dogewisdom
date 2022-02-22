@@ -28,14 +28,11 @@ function Register(props) {
     }
 
     const setResponseErrors = (response) => {
-        console.log(response);
         Object.keys(response).forEach(key => {
-            console.log(`key: ${key}  :  value: ${response[key]}`);
             setErrors({...errors, 
                 [key]: response[key],
             });
         })
-        console.log(errors);
     }
 
     const findFormErrors = () => {
@@ -71,71 +68,13 @@ function Register(props) {
                     //Cookies.set("token", res.data.token, { expires: 7 })
                     //window.location.reload(false) // Reloads page for app the render again
                     closeModal() //Closes Login Modal
-                    props.redirectTotalPage()
                     window.location.reload(false) // Reloads page for app the render again
-                    console.log('sent')
                 })
                 .catch(err => {
+                    console.log(`err: ${err}`)
                     setResponseErrors(err.response.data.message);
-                    // if (message.email) {
-                    //     this.setState({
-                    //         duplicateEmail: true,
-                    //     })
-                    // } 
-                    // if (message.username) {
-                    //     this.setState({
-                    //         duplicateUsername: true,
-                    //     })
-                    // }
-                    // console.log(`Registration Error| email: ${message.email}, username: ${message.username}`)
                 })
         }
-        // const url = config.url.API_URL;
-        // const form = e.target;
-        // console.log(e.currentTarget)
-        // if (e.currentTarget.checkValidity() === false) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        // }
-
-        // if (form[2].value !== form[3].value) {
-        //     this.setState({
-        //         errorCheck: "Password does not match"
-        //     })
-        //     console.log("pass no match");
-        // } else {
-        //     const registerUser = {
-        //         username: form[0].value,
-        //         email: form[1].value,
-        //         password: form[2].value
-        //     }
-        //     axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
-        //         .then(res => {
-        //             this.setState({
-        //                 validated: true,
-        //             })
-        //             //Cookies.set("token", res.data.token, { expires: 7 })
-        //             //window.location.reload(false) // Reloads page for app the render again
-        //             props.onClose() //Closes Login Modal
-        //             props.redirectTotalPage()
-        //             window.location.reload(false) // Reloads page for app the render again
-
-        //         })
-        //         .catch(err => {
-        //             let message = err.response.data.message;
-        //             if (message.email) {
-        //                 this.setState({
-        //                     duplicateEmail: true,
-        //                 })
-        //             } 
-        //             if (message.username) {
-        //                 this.setState({
-        //                     duplicateUsername: true,
-        //                 })
-        //             }
-        //             console.log(`Registration Error| email: ${message.email}, username: ${message.username}`)
-        //         })
-        // }
     }
 
     return (
