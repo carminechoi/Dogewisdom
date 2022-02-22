@@ -1,10 +1,8 @@
-// import models, { sequelize } from '../models';
 import axios from 'axios';
 
 
 class CryptocurrenciesService {
 	static async getCryptoData(subreddit) {
-		console.log(`In server: ${subreddit}`);
 		try  {
 			
 			if (subreddit === '/All') subreddit = 'all-crypto';
