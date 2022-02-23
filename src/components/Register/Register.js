@@ -28,11 +28,12 @@ function Register(props) {
     }
 
     const setResponseErrors = (response) => {
-        Object.keys(response).forEach(key => {
-            setErrors({...errors, 
-                [key]: response[key],
-            });
-        })
+        for (const error in response) {
+            setErrors(errors => ({
+                ...errors, 
+                [error]: response[error],
+            }));
+        }
     }
 
     const findFormErrors = () => {
@@ -71,7 +72,7 @@ function Register(props) {
                     window.location.reload(false) // Reloads page for app the render again
                 })
                 .catch(err => {
-                    console.log(`err: ${err}`)
+                    console.log(err.response.data.message)
                     setResponseErrors(err.response.data.message);
                 })
         }
