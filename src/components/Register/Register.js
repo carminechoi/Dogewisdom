@@ -13,7 +13,7 @@ function Register(props) {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
 
-    // reset form before closing modal
+    // Reset form before closing modal
     const onClose = props.onClose;
     const closeModal = (props) => {
         setForm({});
@@ -21,12 +21,14 @@ function Register(props) {
         onClose();
     }
 
+    //Update form from user input
     const handleChange = (field, value) => {
         setForm({...form, 
             [field]: value,
         });
     }
 
+    // Update errors from server response
     const setResponseErrors = (response) => {
         for (const error in response) {
             setErrors(errors => ({
@@ -36,6 +38,7 @@ function Register(props) {
         }
     }
 
+    // Form validation done here
     const findFormErrors = () => {
         const { username, email, password, password2 } = form;
         const newErrors = {};
