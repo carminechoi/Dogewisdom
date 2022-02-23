@@ -13,7 +13,7 @@ function Register(props) {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
 
-    // reset form before closing modal
+    // Reset form before closing modal
     const onClose = props.onClose;
     const closeModal = (props) => {
         setForm({});
@@ -21,20 +21,24 @@ function Register(props) {
         onClose();
     }
 
+    //Update form from user input
     const handleChange = (field, value) => {
         setForm({...form, 
             [field]: value,
         });
     }
 
+    // Update errors from server response
     const setResponseErrors = (response) => {
-        Object.keys(response).forEach(key => {
-            setErrors({...errors, 
-                [key]: response[key],
-            });
-        })
+        for (const error in response) {
+            setErrors(errors => ({
+                ...errors, 
+                [error]: response[error],
+            }));
+        }
     }
 
+    // Form validation done here
     const findFormErrors = () => {
         const { username, email, password, password2 } = form;
         const newErrors = {};
@@ -71,7 +75,7 @@ function Register(props) {
                     window.location.reload(false) // Reloads page for app the render again
                 })
                 .catch(err => {
-                    console.log(`err: ${err}`)
+                    console.log(err.response.data.message)
                     setResponseErrors(err.response.data.message);
                 })
         }
