@@ -31,10 +31,7 @@ function Register(props) {
     // Update errors from server response
     const setResponseErrors = (response) => {
         for (const error in response) {
-            setErrors(errors => ({
-                ...errors, 
-                [error]: response[error],
-            }));
+            setErrors(response);
         }
     }
 
@@ -69,8 +66,6 @@ function Register(props) {
             }
             axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
                 .then(res => {
-                    //Cookies.set("token", res.data.token, { expires: 7 })
-                    //window.location.reload(false) // Reloads page for app the render again
                     closeModal() //Closes Login Modal
                     window.location.reload(false) // Reloads page for app the render again
                 })
