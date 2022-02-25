@@ -66,11 +66,14 @@ function Register(props) {
             }
             axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
                 .then(res => {
+                    console.log("try")
+                    const token = res.data.token;
+                    localStorage.setItem('doge_user', token);
                     closeModal() //Closes Login Modal
                     window.location.reload(false) // Reloads page for app the render again
                 })
                 .catch(err => {
-                    console.log(err.response.data.message)
+                    console.log(err.response.data)
                     setResponseErrors(err.response.data.message);
                 })
         }
