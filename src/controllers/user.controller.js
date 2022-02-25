@@ -15,8 +15,9 @@ class UserController {
         try {
             let result = await UserService.postRegister(req);
             let status = result.status === "success" ? 200 : 400;
-            return res.status(status).json({ status: result.status, message: result.message });
+            return res.status(status).json({ status: result.status, message: result.message, token: result.token });
         } catch (e) {
+            console.log(e)
             return res.status(500).json({ status: 500 , message: e });
         }
     }

@@ -1,6 +1,6 @@
-import axios from 'axios';
 import User from '../models/user.model';
 import { verifyRegister } from '../middleware';
+import { userAuth } from '../middleware';
 
 class UserService {
 
@@ -22,12 +22,13 @@ class UserService {
         if (user) {
             return {status: "failure", message: verifyRegister.checkIfUsernameOrEmail(user, registerData.body)};
         } else {
-            User.create({
+            const user = await User.create({
                 username: registerData.body.username,
                 password: registerData.body.password,
                 email: registerData.body.email,
             });
-            return {status: "success", message: "user created"};
+            const token = userAuth.generateAccessToken(user.id);
+            return {status: "success", message: "user created", token: token};
         }
     }
 }
