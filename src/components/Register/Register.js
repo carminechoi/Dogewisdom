@@ -1,13 +1,8 @@
 import React, { useState } from "react"
-import { Form, Button } from "react-bootstrap";
-import Cookies from "js-cookie";
-import axios from "axios";
-import { config } from '../../Constants';
-
-import Modal from "react-bootstrap/Modal";
+import { Form, Button, Modal } from "react-bootstrap";
 import './Register.css';
 
-const SALTROUNDS = 7;
+import AuthService from '../../services/auth.service';
 
 function Register(props) {
     const [form, setForm] = useState({});
@@ -28,55 +23,41 @@ function Register(props) {
         });
     }
 
-    // Update errors from server response
-    const setResponseErrors = (response) => {
-        for (const error in response) {
-            setErrors(response);
-        }
-    }
-
     // Form validation done here
     const findFormErrors = () => {
         const { username, email, password, password2 } = form;
-        const newErrors = {};
+        const formErrors = {};
 
-        if (!username || username === "") newErrors.username = 'Enter username';
+        if (!username || username === "") formErrors.username = 'Enter username';
         
-        if (!email || email === "") newErrors.email = "Enter email";
+        if (!email || email === "") formErrors.email = "Enter email";
         
-        if (!password || password === "") newErrors.password = "Enter a password";
-        else if (!password2 || password === "") newErrors.password2 = "Confirm your password";
-        else if (password !== password2) newErrors.password2 = "Those passwords didn't match. Try again.";
+        if (!password || password === "") formErrors.password = "Enter a password";
+        else if (!password2 || password === "") formErrors.password2 = "Confirm your password";
+        else if (password !== password2) formErrors.password2 = "Those passwords didn't match. Try again.";
         
-        return newErrors;
+        return formErrors;
     }
 
     const handleRegister = async (e) => {
         e.preventDefault();
-        const newErrors = findFormErrors();
+        const formErrors = findFormErrors();
 
-        if (Object.keys(newErrors).length !== 0) {
-            setErrors(newErrors);
-        } else {
-            const url = config.url.API_URL;
-            const registerUser = {
-                username: form.username,
-                email: form.email,
-                password: form.password,
-            }
-            axios.post(url + "/api/register", registerUser, { "Content-Type": "application/json" })
-                .then(res => {
-                    console.log("try")
-                    const token = res.data.token;
-                    localStorage.setItem('doge_user', token);
-                    closeModal() //Closes Login Modal
-                    window.location.reload(false) // Reloads page for app the render again
-                })
-                .catch(err => {
-                    console.log(err.response.data)
-                    setResponseErrors(err.response.data.message);
-                })
-        }
+        if (Object.keys(formErrors).length !== 0) {
+            setErrors(formErrors);
+        } 
+        AuthService.register(form.username, form.email, form.password)
+            .then(res => {
+                closeModal() //Closes Login Modal
+                window.location.reload(false) // Reloads page
+            })
+            .catch(err => {
+                // Only update errors if duplicates exists.
+                // Otherwise form errors are overwritten
+                if (err.response.data.message.username || err.response.data.message.email) {
+                    setErrors(err.response.data.message);
+                }
+            });
     }
 
     return (

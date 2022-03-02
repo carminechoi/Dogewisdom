@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Form, Button } from "react-bootstrap";
-import Cookies from "js-cookie";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import "./Login.css";
