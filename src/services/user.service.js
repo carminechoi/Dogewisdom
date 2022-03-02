@@ -17,10 +17,10 @@ class UserService {
             return {status: "failure", message: "user form incomplete"}
         }
         
-        const user = await verifyRegister.checkIfUserExists(registerData.body);
+        const duplicateUser = await verifyRegister.checkIfUserExists(registerData.body);
 
-        if (user) {
-            return {status: "failure", message: verifyRegister.checkIfUsernameOrEmail(user, registerData.body)};
+        if (duplicateUser) {
+            return {status: "failure", message: duplicateUser};
         } else {
             const user = await User.create({
                 username: registerData.body.username,
