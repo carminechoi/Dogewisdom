@@ -16,19 +16,32 @@ class UserService {
         if (!registerData.body.email || !registerData.body.username || !registerData.body.password) {
             return {status: "failure", message: "user form incomplete"}
         }
-        
-        const duplicateUser = await verifyRegister.checkIfUserExists(registerData.body);
 
-        if (duplicateUser) {
+        const duplicateUser = await verifyRegister.checkIfUserExists(registerData.body);
+        if (duplicateUser.username || duplicateUser.email) {
             return {status: "failure", message: duplicateUser};
+        } 
+
+        const user = await User.create({
+            username: registerData.body.username,
+            password: registerData.body.password,
+            email: registerData.body.email,
+        });
+
+        const token = userAuth.generateAccessToken(user.id);
+        return {status: "success", message: "user created", token: token};
+    }
+
+    static async getUser(token) {
+        const user = userAuth.verifyAccessToken(token);
+        if (user.id) {
+            const userData = await User.findById(user.id);
+            return {
+                username: userData.username,
+                bookmarks: userData.bookmarks,
+            }
         } else {
-            const user = await User.create({
-                username: registerData.body.username,
-                password: registerData.body.password,
-                email: registerData.body.email,
-            });
-            const token = userAuth.generateAccessToken(user.id);
-            return {status: "success", message: "user created", token: token};
+            return null;
         }
     }
 }
