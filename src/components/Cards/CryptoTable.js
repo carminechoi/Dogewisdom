@@ -22,16 +22,15 @@ function CryptoTable (props) {
                 <CardHeader />
             </thead>
             <tbody>
-                {console.log(props.bookmarks)}
                 {cryptoData && cryptoData.map((data, id) => {
                     return <CryptoCard 
                         key={id}
                         rank={data.rank} 
                         name={data.name} 
-                        symbol={data.ticker.slice(0,-2)}
+                        symbol={data.ticker}
                         mentions={data.mentions} 
                         upvotes={data.upvotes}
-                        bookmarked={props.bookmarks.includes(data.ticker.slice(0,-2))}
+                        bookmarked={props.bookmarks.includes(data.ticker)}
                     />
                 })}
             </tbody>

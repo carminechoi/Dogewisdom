@@ -8,15 +8,16 @@ import AuthService from '../services/auth.service';
 function Home() {
     const [subreddit, setSubreddit] = useState('All');
     const [username, setUsername] = useState('');
-    const [bookmarks, setBookmarks] = useState({});
+    const [bookmarks, setBookmarks] = useState([]);
 
     useEffect(() => {
         // componentDidMount
         AuthService.getUserInfo()
             .then((user) => {
-                setUsername(user.data.username);
-                setBookmarks(user.data.bookmarks);
-                console.log(user.data)
+                if (user) {
+                    setUsername(user.data.username);
+                    setBookmarks(user.data.bookmarks);
+                }
             });
         // componentWillUnmount
         return () => {}

@@ -4,19 +4,19 @@ import './Register.css';
 
 import AuthService from '../../services/auth.service';
 
-function Register(props) {
+function RegisterForm(props) {
     const [form, setForm] = useState({});
     const [errors, setErrors] = useState({});
 
     // Reset form before closing modal
     const onClose = props.onClose;
-    const closeModal = (props) => {
+    const closeModal = () => {
         setForm({});
         setErrors({});
         onClose();
     }
 
-    //Update form from user input
+    // Update form from user input
     const handleChange = (field, value) => {
         setForm({...form, 
             [field]: value,
@@ -48,8 +48,8 @@ function Register(props) {
         } 
         AuthService.register(form.username, form.email, form.password)
             .then(res => {
-                closeModal() //Closes Login Modal
-                window.location.reload(false) // Reloads page
+                closeModal(); // Closes Login Modal
+                window.location.reload(false); // Reloads page
             })
             .catch(err => {
                 // Only update errors if duplicates exists.
@@ -130,4 +130,4 @@ function Register(props) {
     
 }
 
-export default Register;
+export default RegisterForm;

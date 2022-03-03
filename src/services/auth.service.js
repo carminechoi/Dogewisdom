@@ -16,6 +16,21 @@ class AuthService {
         return res.data;
     }
 
+    async login(username, password) {
+        const res = await axios.post(API_URL + "/api/login", {
+            username,
+            password,
+        });
+        if (res.data.token) {
+            localStorage.setItem('doge_user', JSON.stringify(res.data.token));
+        }
+        return res.data;
+    }
+
+    logout() {
+        localStorage.removeItem('doge_user');
+    }
+
     async getUserInfo() {
         const config = { 
             params: {
