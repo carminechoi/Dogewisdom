@@ -9,6 +9,7 @@ function Home() {
     const [subreddit, setSubreddit] = useState('All');
     const [username, setUsername] = useState('');
     const [bookmarks, setBookmarks] = useState([]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         // componentDidMount
@@ -17,6 +18,7 @@ function Home() {
                 if (user) {
                     setUsername(user.data.username);
                     setBookmarks(user.data.bookmarks);
+                    setIsLoggedIn(true);
                 }
             });
         // componentWillUnmount
@@ -28,7 +30,7 @@ function Home() {
             <NavigationBar username={username}/>
             <SubredditBar subreddit={subreddit} setSubreddit={setSubreddit} />
             <div className="mx-2">
-                <CryptoTable subreddit={subreddit} bookmarks={bookmarks}/>
+                <CryptoTable subreddit={subreddit} bookmarks={bookmarks} isLoggedIn={isLoggedIn} />
             </div>
         </div>
     )

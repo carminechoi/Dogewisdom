@@ -31,6 +31,7 @@ function CryptoTable (props) {
                         mentions={data.mentions} 
                         upvotes={data.upvotes}
                         bookmarked={props.bookmarks.includes(data.ticker)}
+                        isLoggedIn={props.isLoggedIn}
                     />
                 })}
             </tbody>
