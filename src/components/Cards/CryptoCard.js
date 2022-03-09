@@ -3,9 +3,15 @@ import cmcData from '../../assets/cmc-data.json';
 import { ReactComponent as Star } from '../../assets/star.svg';
 import { ReactComponent as Starfill } from '../../assets/star-fill.svg';
 import './CryptoCard.css';
+import axios from 'axios';
+import { config } from '../../Constants';
+import AuthService from '../../services/AuthService';
+import LoginForm from '../LoginForm/LoginForm';
+
+const API_URL = config.url.API_URL;
 
 function CryptoCard(props) {
-
+    const [showLogin, setShowLogin] = useState(false);
     const [bookmark, setBookmark] = useState(props.bookmarked);
     const getImageURL = () => {
         let crypto, imageURL;
@@ -25,13 +31,25 @@ function CryptoCard(props) {
     }
 
     const handleBookmark = () => {
-        setBookmark(!bookmark);
+        if (props.isLoggedIn) {
+            // Submit Bookmark updates
+            setBookmark(!bookmark);
+            axios.post(API_URL + "/api/user/bookmark", {
+                token: AuthService.getUser(),
+                isBookmark: !bookmark,
+                symbol: props.symbol,
+            });
+        } else {
+            // Open Login Modal
+            setShowLogin(!showLogin);
+        }
     }
 
     return (
         <tr className="bg-white align-middle">
             <td className="text-center d-none d-sm-table-cell noselect">
                 {bookmark ? <Starfill fill="gold" onClick={handleBookmark} /> : <Star onClick={handleBookmark} />}
+                <LoginForm onClose={setShowLogin} showLogin={showLogin}/>
             </td>
             <td className="text-center d-none d-sm-table-cell">{props.rank}</td>
             <td className="d-flex align-items-center align-text-center ps-4">

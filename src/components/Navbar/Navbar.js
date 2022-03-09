@@ -5,13 +5,19 @@ import Nav from 'react-bootstrap/Nav'
 import logo from '../../assets/doge-logo.png';
 import './Navbar.css';
 
-import LoginPage from '../LoginPage/LoginPage';
-import Register from '../Register/Register';
+import LoginForm from '../LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
+import AuthService from '../../services/AuthService';
 
-function Header() {
+function Header(props) {
 
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+
+    const logout = () => {
+        AuthService.logout();
+        window.location.reload(false) // Reloads page
+    };
 
     return (
         <Navbar bg="white" expand="lg" className="">
@@ -46,16 +52,22 @@ function Header() {
                                 aria-label="Search"
                             />
                         </Form>
-                        <Button className="btn-account login-btn" onClick={() => setShowLogin(!showLogin)} >Log in</Button>
-                        <LoginPage
-                            onClose={setShowLogin}
-                            showLogin={showLogin}
-                        />
-                        <Button className="btn-account signup-btn" onClick={() => setShowRegister(!showRegister)} >Sign up</Button>
-                        <Register
-                            onClose={setShowRegister}
-                            showRegister={showRegister}
-                        />
+                        {props.username ? (
+                            <Button className="btn-account login-btn" onClick={() => logout()} >Log out</Button>
+                        ) : (
+                            <>
+                            <Button className="btn-account login-btn" onClick={() => setShowLogin(!showLogin)} >Log in</Button>
+                            <LoginForm
+                                onClose={setShowLogin}
+                                showLogin={showLogin}
+                            />
+                            <Button className="btn-account signup-btn" onClick={() => setShowRegister(!showRegister)} >Sign up</Button>
+                            <RegisterForm
+                                onClose={setShowRegister}
+                                showRegister={showRegister}
+                            />
+                            </>
+                        )}
                     </Nav>
                 </Navbar.Collapse>
             </div>

@@ -27,10 +27,11 @@ function CryptoTable (props) {
                         key={id}
                         rank={data.rank} 
                         name={data.name} 
-                        symbol={data.ticker.slice(0,-2)}
+                        symbol={data.ticker}
                         mentions={data.mentions} 
                         upvotes={data.upvotes}
-                        bookmarked={false}
+                        bookmarked={props.bookmarks.includes(data.ticker)}
+                        isLoggedIn={props.isLoggedIn}
                     />
                 })}
             </tbody>
