@@ -1,9 +1,10 @@
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 
+dotenv.config();
 import User from '../models/user.model';
-import { nextTick } from 'process';
 
 const verifyLogin = async (username, password) => {
     const user = await User.findOne({ username: username })
@@ -39,7 +40,7 @@ const checkIfUserExists = async (registerData) => {
 };
 
 const generateAccessToken = (userID) => {
-    const RSA_PRIVATE_KEY = fs.readFileSync('./private.key', 'utf8');
+    const RSA_PRIVATE_KEY = process.env.RSA_PRIVATE_KEY;
     return jwt.sign({ 
                 id: userID,
                 admin: false,
@@ -51,7 +52,7 @@ const generateAccessToken = (userID) => {
 };
 
 const verifyAccessToken = (token) => {
-    const RSA_PUBLIC_KEY = fs.readFileSync('./public.key', 'utf8');
+    const RSA_PUBLIC_KEY = process.env.RSA_PUBLIC_KEY;
     try {
         return jwt.verify(token, RSA_PUBLIC_KEY)
     } catch (err) {
