@@ -53,6 +53,29 @@ class UserService {
             return null;
         }
     }
+
+    static async postBookmark(bookmarkData) {
+        const user = userAuth.verifyAccessToken(bookmarkData.token);
+
+        // If user exists, remove or add the bookmark
+        if (user.id) {
+            if (bookmarkData.isBookmark) {
+                await User.updateOne(
+                    { _id: user.id },
+                    { $addToSet: { bookmarks: bookmarkData.symbol } }
+                )
+                return {status: "success", message: "bookmark added"}; 
+            } else {
+                await User.updateOne(
+                    { _id: user.id },
+                    { $pull: { bookmarks: bookmarkData.symbol } }
+                )
+                return {status: "success", message: "bookmark removed"}; 
+            }
+        } else {
+            return {status: "failure", message: "invalid token"}; 
+        }
+    }
 }
 
 export { UserService };

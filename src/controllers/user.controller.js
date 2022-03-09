@@ -30,6 +30,16 @@ class UserController {
             return res.status(500).json({ status: 500 , message: e });
         }
     }
+
+    static postBookmark = async function (req, res, next) {
+        try {
+            let result = await UserService.postBookmark(req.body);
+            let status = result.status === "success" ? 200 : 400;
+            return res.status(status).json({ status: result.status, message: result.message});
+        } catch (e) {
+            return res.status(500).json({ status: 500 , message: e });
+        }
+    }
 }
 
 export { UserController };
