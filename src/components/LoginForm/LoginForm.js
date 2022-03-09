@@ -48,7 +48,6 @@ function LoginForm(props) {
                 window.location.reload(false); // Reloads page
             })
             .catch(err => {
-                console.log(err.response.data)
                 if (err.response.data.status === "failure") {
                     setErrors(err.response.data.message);
                 }

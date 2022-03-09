@@ -31,6 +31,10 @@ class AuthService {
         localStorage.removeItem('doge_user');
     }
 
+    getUser() {
+        return JSON.parse(localStorage.getItem('doge_user'));
+    }
+
     async getUserInfo() {
         const config = { 
             params: {

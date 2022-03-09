@@ -3,6 +3,11 @@ import cmcData from '../../assets/cmc-data.json';
 import { ReactComponent as Star } from '../../assets/star.svg';
 import { ReactComponent as Starfill } from '../../assets/star-fill.svg';
 import './CryptoCard.css';
+import axios from 'axios';
+import { config } from '../../Constants';
+import AuthService from '../../services/AuthService';
+
+const API_URL = config.url.API_URL;
 
 function CryptoCard(props) {
 
@@ -26,6 +31,11 @@ function CryptoCard(props) {
 
     const handleBookmark = () => {
         setBookmark(!bookmark);
+        axios.post(API_URL + "/api/user/bookmark", {
+            token: AuthService.getUser(),
+            isBookmark: !bookmark,
+            symbol: props.symbol,
+        });
     }
 
     return (
