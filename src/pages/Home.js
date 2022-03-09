@@ -3,7 +3,7 @@ import NavigationBar from '../components/Navbar/Navbar.js'
 import SubredditBar from '../components/SubredditBar/SubredditBar.js';
 import CryptoTable from '../components/Cards/CryptoTable';
 
-import AuthService from '../services/auth.service';
+import AuthService from '../services/AuthService';
 
 function Home() {
     const [subreddit, setSubreddit] = useState('All');

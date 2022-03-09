@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import "./Login.css";
 
-import AuthService from "../../services/auth.service";
+import AuthService from "../../services/AuthService";
 
 function LoginForm(props) {
     const [form, setForm] = useState({});
