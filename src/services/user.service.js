@@ -35,7 +35,6 @@ class UserService {
 
         // Create a token and send it back
         const token = userAuth.generateAccessToken(user.id);
-        console.log(token)
         return {status: "success", message: "user created", token: token};
     }
 
