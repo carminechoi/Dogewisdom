@@ -37,7 +37,8 @@ class AuthService {
                 token: JSON.parse(localStorage.getItem('doge_user'))
             } 
         }
-        return await axios.get(API_URL + "/api/user", config);
+        if (config.params.token) return await axios.get(API_URL + "/api/user", config);
+        else return null;
     }
 }
 
