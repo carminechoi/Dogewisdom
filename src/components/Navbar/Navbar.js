@@ -44,14 +44,6 @@ function Header(props) {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" className="" />
                 <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end" >
                     <Nav className="gap-2">
-                        <Form className="">
-                            <FormControl
-                                type="search"
-                                placeholder="Search all assets..."
-                                className=""
-                                aria-label="Search"
-                            />
-                        </Form>
                         {props.username ? (
                             <Button className="btn-account login-btn" onClick={() => logout()} >Log out</Button>
                         ) : (
