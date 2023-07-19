@@ -1,0 +1,17 @@
+.title-main {
+    color: #2D68FF;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-right {
+    width: 100%;
+}
+
+.btn-account {
+    min-width: 5rem;
+}

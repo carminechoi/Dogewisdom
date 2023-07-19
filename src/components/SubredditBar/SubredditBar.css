@@ -1,0 +1,7 @@
+#subreddit-nav {
+    display: flex;
+    justify-content: center;
+    row-gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
