@@ -1,11 +1,11 @@
 const prod = {
 	url: {
-		API_URL: process.env.API_URL,
+		API_URL: process.env.REACT_APP_API_URL,
 	},
 };
 const dev = {
 	url: {
-		API_URL: "http://localhost:5000",
+		API_URL: process.env.REACT_APP_API_URL_DEV,
 	},
 };
 
